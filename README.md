@@ -1,5 +1,4 @@
-
-# Pharmacy Guard Management System
+## Pharmacy Guard Management System
 
 ### Description
 
@@ -35,9 +34,19 @@ The project supports Dockerization to facilitate deployment. Follow these steps 
    docker-compose build
    ```
 
-   ![image](https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/d2608096-d76b-4378-91de-3448b6f952e9)
+4. **Run the Docker Container**
+   ```bash
+   docker-compose up
+   ```
 
-   ## Pharmacy Guard Management System
+The application will be accessible at: [http://localhost:8089](http://localhost:8089).
+
+![image](https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/1ecc397c-e8fa-44d1-b110-64ad34c03e56)
+
+
+
+
+## Pharmacy Guard Management System
 
 ### Description
 
@@ -83,12 +92,11 @@ If you prefer to run the application outside a Docker container, follow these st
 
 Run tests and analyze the code using SonarQube for quality assurance.
 
+![image](https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/51119dfb-7df5-4e29-b7c9-00eeaeec6182)
+
+### Data Base :
+
+![image](https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/88f85e5b-2870-4bba-b0ab-84f6cc614d3b)
 
 
 
-5. **Run the Docker Container**
-   ```bash
-   docker-compose up
-   ```
-
-The application will be accessible at: [http://localhost:8089](http://localhost:8089).
