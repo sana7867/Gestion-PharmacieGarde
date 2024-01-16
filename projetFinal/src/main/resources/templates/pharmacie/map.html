@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte des Pharmacies</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Ajoutez ceci dans le head de votre fichier HTML -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+</head>
+<header>
+    <div class="h-100 d-inline-flex align-items-center py-3 me-4">
+
+    </div>
+</header>
+<nav>
+    <h1 class="m-0">Pharmacy Localisation</h1>
+    <a href="/client/home">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="/pharmacie/list3">Liste des Pharmacies</a>
+    <a href="/pharmacie/map">Carte</a>
+</nav>
+<body>
+<div id="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13346.94385577257!2d-8.517190949999998!3d33.24722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sma!4v1705271473544!5m2!1sfr!2sma" width="1820" height="720" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+
+<footer>
+    &copy; 2024
+</footer>
+</body>
+</html>

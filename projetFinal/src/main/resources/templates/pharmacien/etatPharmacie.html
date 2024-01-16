@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Ajoutez les balises head nécessaires -->
+    <title>État de la pharmacie</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/histo.css}">
+
+</head>
+<body>
+<input type="checkbox" id="menu" name="">
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2><span class="fa fa-user-o"></span>Gestion pharmacies</h2>
+    </div>
+
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a href="/pharmacien/home" class="active"><span class="fa fa-home"></span><span>Accueil</span></a>
+            </li>
+            <li>
+                <a href="/pharmacie/form2"><span class="fa fa-hospital-o"></span><span>Ajouter un Pharmacie</span></a>
+            </li>
+            <li>
+                <a href="/pharmacieGarde/historique2"><span class="fa fa-history"></span><span>Historiques</span></a>
+            </li>
+            <li>
+                <a href="/pharmacie/list2"><span class="fa fa-hospital-o"></span><span>List des  Pharmacies</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<div class="content">
+
+    <header>
+        <p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Accueil</span></p>
+
+        <div class="search-wrapper">
+            <span class="fa fa-search"></span>
+            <input type="search" name="" placeholder="recherche" />
+        </div>
+
+        <div class="user-wrapper" id="dropdown">
+
+            <img src="https://cdn4.iconfinder.com/data/icons/people-std-pack/512/boss-1024.png" width="30" height="30" class="logo-admin">
+            <div class="dropdown-content">
+                <p>Mon profil</p>
+                <p><a href="/admin/home">Deconnexion</a></p>
+            </div>
+
+        </div>
+    </header>
+    <div>
+
+        <main class="main-content">
+            <h2 >État de la pharmacie</h2>
+            <p>Nom de la pharmacie : <span th:text="${pharmacie.nom}"></span></p>
+            <p>Coordonnées : Latitude = <span th:text="${pharmacie.latitude}"></span>, Longitude = <span th:text="${pharmacie.longitude}"></span></p>
+            <h3>Gardes programmées :</h3>
+            <ul >
+                <li th:each="garde : ${gardes}" >
+                    <p>Date de début : <span th:text="${garde.dateDebut}"></span></p>
+                    <p>Date de fin : <span th:text="${garde.dateFin}"></span></p>
+                </li>
+            </ul>
+        </main>
+
+</body>
+</html>

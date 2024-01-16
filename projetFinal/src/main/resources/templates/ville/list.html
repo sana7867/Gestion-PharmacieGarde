@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Dashbord html and css</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/gardStyle2.css}">
+</head>
+<body>
+	<input type="checkbox" id="menu" name="">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="fa fa-user-o"></span>Gestion pharmacie</h2>
+		</div>
+
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a href="/admin/home2" class="active"><span class="fa fa-home"></span><span>Accueil</span></a>
+				</li>
+				<li>
+					<a href="/pharmacie/list"><span class="fa fa-hospital-o"></span><span>Gestion Pharmacies</span></a>
+				</li>
+				<li>
+					<a href="/ville/list"><span class="fa fa-building-o"></span><span>Gestion villes</span></a>
+				</li>
+				<li>
+					<a href="/zone/list"><span class="fa fa-map-marker"></span><span>Gestion zones</span></a>
+				</li>
+				<li>
+					<a href="/garde/list"><span class="fa fa-clipboard">></span><span>Gestion gardes</span></a>
+				</li>
+				<li>
+					<a href="/pharmacien/list"><span class="fa fa-user-md"></span><span>List des pharmaciens</span></a>
+				</li>
+				<li>
+					<a href="/pharmacieGarde/list"><span class="fa fa-registered"></span><span>Gestion pharmacies gardes</span></a>
+				</li>
+				<li>
+					<a href="/admin/statistique"><span class="fa fa-line-chart"></span><span>Statistique</span></a>
+				</li>
+				<li>
+					<a href="/pharmacieGarde/historique"><span class="fa fa-history"></span><span>Historiques</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="content">
+		
+		<header>
+			<p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Accueil</span></p>
+
+			<div class="search-wrapper">
+				<span class="fa fa-search"></span>
+				<input type="search" name="" placeholder="recherche" />
+			</div>
+
+			<div class="user-wrapper" id="dropdown">
+				<div>
+					<h4 ></h4>
+					<small>Admin</small>
+				</div>
+				
+				<img src="https://cdn4.iconfinder.com/data/icons/people-std-pack/512/boss-1024.png" width="30" height="30" class="logo-admin">
+				<div class="dropdown-content">
+				<p>Mon profil</p>
+					<p><a href="/admin/home">Deconnexion</a></p>
+				</div>
+				
+			</div>
+		</header>
+
+        <div class="container mt-4">
+            <h2>List of Villes</h2>
+        
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ville : ${villes}">
+                    <td th:text="${ville.id}"></td>
+                    <td th:text="${ville.nom}"></td>
+                    <td>
+                        <img th:src="@{/images/{imageName}(imageName=${ville.image})}"
+     alt="Ville Image"
+     style="max-width: 100px; max-height: 100px;">
+
+                    </td>
+                    <td><a th:href="@{/ville/edit/{id}(id=${ville.id})}" class="edit-btn">Edit</a></td>
+                    <td><a th:href="@{/ville/delete/{id}(id=${ville.id})}" class="delete-btn">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <a href="/ville/form">Ajouter une ville</a>
+		
+</body>
+</html>

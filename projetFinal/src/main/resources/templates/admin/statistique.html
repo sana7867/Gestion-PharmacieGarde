@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Dashbord html and css</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet"   type="text/css" th:href="@{/css/statistique.css}">
+
+</head>
+<body>
+	<input type="checkbox" id="menu" name="">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="fa fa-user-o"></span>Learn Programming</h2>
+		</div>
+
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a href="/admin/home2" class="active"><span class="fa fa-home"></span><span>Accueil</span></a>
+				</li>
+				<li>
+					<a href="/pharmacie/list"><span class="fa fa-hospital-o"></span><span>Gestion Pharmacies</span></a>
+				</li>
+				<li>
+					<a href="/ville/list"><span class="fa fa-building-o"></span><span>Gestion villes</span></a>
+				</li>
+				<li>
+					<a href="/zone/list"><span class="fa fa-map-marker"></span><span>Gestion zones</span></a>
+				</li>
+				<li>
+					<a href="/garde/list"><span class="fa fa-clipboard">></span><span>Gestion gardes</span></a>
+				</li>
+				<li>
+					<a href="/pharmacien/list"><span class="fa fa-user-md"></span><span>List des Pharmaciens</span></a>
+				</li>
+				<li>
+					<a href="/pharmacieGarde/list"><span class="fa fa-registered"></span><span>Gestion pharmacies gardes</span></a>
+				</li>
+				<li>
+					<a href="/admin/statistique"><span class="fa fa-line-chart"></span><span>Statistique</span></a>
+				</li>
+				<li>
+					<a href="/pharmacieGarde/historique"><span class="fa fa-history"></span><span>Historiques</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	<div class="content">
+		
+		<header>
+			<p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Accueil</span></p>
+
+			<div class="search-wrapper">
+				<span class="fa fa-search"></span>
+				<input type="search" name="" placeholder="recherche" />
+			</div>
+
+			<div class="user-wrapper" id="dropdown">
+				<div>
+					<h4 ></h4>
+					<small>Admin</small>
+				</div>
+				
+				<img src="https://cdn4.iconfinder.com/data/icons/people-std-pack/512/boss-1024.png" width="30" height="30" class="logo-admin">
+				<div class="dropdown-content">
+				<p>Mon profil</p>
+					<p><a href="/admin/home">Deconnexion</a></p>
+				</div>
+				
+			</div>
+		</header>
+
+		<main>
+			<div class="cards">
+				<div class="card-single">
+					<div>
+                        <p><span th:text="${totalPharmacies}"></span></p>
+                        <small>Pharmacies</small>
+					</div>
+					<div>
+						<span class="fa fa-hospital-o"></span>
+					</div>
+				</div>
+
+				<div class="card-single">
+					<div>
+						
+            <p><span th:text="${totalVilles}"></span></p>
+            <small>Villes</small>
+					</div>
+					<div>
+						<span  class="fa fa-building-o"></span>
+					</div>
+				</div>
+				<div class="card-single">
+					<div>	
+            <p><span th:text="${totalGardes}"></span></p>
+            <small>Gardes</small>
+					</div>
+					<div>
+						<span class="fa fa-ambulance"></span>
+					</div>
+				</div>
+				<div class="card-single">
+					<div>
+                      
+                        <p><span th:text="${totalPharmaciens}"></span></p>
+                        <small>Pharmaciens</small>
+					</div>
+					<div>
+						<span class="fa fa-user-md"></span>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<h2>Pharmacies par zone</h2>
+				<canvas id="pharmaciesParZoneChart" width="300" height="100"></canvas>
+			</div>
+			<div class="prZone">
+				<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+				<script th:inline="javascript">
+					/* Récupération des données depuis le modèle */
+					var nomsZones = /*[[${nomsZones}]]*/ [];
+					var nombrePharmaciesParZone = /*[[${nombrePharmaciesParZone}]]*/ [];
+			
+					/* Vérification des données dans la console pour déboguer */
+					console.log("Noms des zones:", nomsZones);
+					console.log("Nombre de pharmacies par zone:", nombrePharmaciesParZone);
+			
+					/* Initialisation du graphique */
+					var ctx = document.getElementById('pharmaciesParZoneChart').getContext('2d');
+					var pharmaciesParZoneChart = new Chart(ctx, {
+						type: 'bar',
+						data: {
+							labels: nomsZones,
+							datasets: [{
+								label: 'Nombre de pharmacies par zone',
+								data: nombrePharmaciesParZone,
+								backgroundColor: 'rgba(126,235,54,0.5)',
+								borderColor: 'rgb(54,235,120)',
+								borderWidth: 1
+							}]
+						},
+						options: {
+							scales: {
+								y: {
+									beginAtZero: true
+								}
+							}
+						}
+					});
+				</script>
+			</div>
+
+		</main>
+
+        
+        
+	</div>
+    
+</body>
+</html>

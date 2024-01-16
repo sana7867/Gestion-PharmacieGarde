@@ -1,0 +1,64 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 500px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+
+}
+
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form a {
+    text-decoration: none;
+    color: #008ea1;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+form button {
+    width: 80%;
+    padding: 12px;
+    background-color: #008ea1;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form a.create-account {
+    color: #555;
+    margin-top: 16px;
+    display: block;
+}
+
+form a.create-account:hover {
+    color: #008ea1;
+}

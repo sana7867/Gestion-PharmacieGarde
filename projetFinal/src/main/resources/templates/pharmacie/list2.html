@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Dashbord html and css</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css"  th:href="@{/css/prList.css}">
+
+</head>
+<body>
+	<input type="checkbox" id="menu" name="">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2>Gestion pharmacies</h2>
+		</div>
+
+
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a href="/pharmacien/home" class="active"><span class="fa fa-home"></span><span>Accueil</span></a>
+				</li>
+				<li>
+					<a href="/pharmacie/form2"><span class="fa fa-hospital-o"></span><span>Ajouter un Pharmacie</span></a>
+				</li>
+				<li>
+					<a href="/pharmacieGarde/historique2"><span class="fa fa-history"></span><span>Historiques</span></a>
+				</li>
+				<li>
+					<a href="/pharmacie/list2"><span class="fa fa-hospital-o"></span><span>List des  Pharmacies</span></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+
+	<div class="content">
+		
+		<header>
+			<p><label for="menu"><span class="fa fa-bars"></span></label><span class="accueil">Accueil</span></p>
+
+			<div class="search-wrapper">
+				<span class="fa fa-search"></span>
+				<input type="search" name="" placeholder="recherche" />
+			</div>
+
+			<div class="user-wrapper" id="dropdown">
+				<div>
+					<h4 ></h4>
+					<small>Admin</small>
+				</div>
+				
+				<img src="https://cdn4.iconfinder.com/data/icons/people-std-pack/512/boss-1024.png" width="30" height="30" class="logo-admin">
+				<div class="dropdown-content">
+				<p>Mon profil</p>
+					<p><a href="/admin/home">Deconnexion</a></p>
+				</div>
+				
+			</div>
+		</header>
+<div>
+        
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Photo</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Zone</th>
+                <th>Utilisateur</th>
+                <th>Edit</th>
+                <th>Delete</th>
+				<th>Etat</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pharmacie : ${pharmacies}">
+                <td th:text="${pharmacie.id}"></td>
+                <td th:text="${pharmacie.nom}"></td>
+                <td>
+                    <img th:src="@{/images/{imageName}(imageName=${pharmacie.photo})}"
+                         alt="photo"
+                         style="max-width: 100px; max-height: 100px;">
+                </td>
+                <td th:text="${pharmacie.latitude}"></td>
+                <td th:text="${pharmacie.longitude}"></td>
+				<td th:text="${ pharmacie.zone != null ? pharmacie.zone.nom:''}"></td>
+                <td th:text="${pharmacie.users.nom + ' ' + pharmacie.users.prenom}"></td>
+                <td><a th:href="@{/pharmacie/edit2/{id}(id=${pharmacie.id})}" class="edit-btn">Edit</a></td>
+                <td><a th:href="@{/pharmacie/delete2/{id}(id=${pharmacie.id})}" class="delete-btn">Delete</a></td>
+				<td><a th:href="@{/pharmacie/etatPharmacie/{pharmacieId}(pharmacieId=${pharmacie.id})}">Voir l'état de la pharmacie</a>
+				</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <a href="/pharmacie/form2"> Ajouter une pharmacie</a>
+		
+</body>
+</html>

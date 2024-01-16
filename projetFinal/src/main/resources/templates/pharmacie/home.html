@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pharmacien Operation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            display: flex; /* Make the children align horizontally */
+            align-items: center; /* Align children vertically at the center */
+            justify-content: space-between; /* Distribute space between children */
+        }
+
+        a.button, button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .logo {
+            max-width: 100px; /* Adjust the size as needed */
+            max-height: 60px;
+            margin-right: 20px; /* Add some margin for spacing */
+        }
+
+        div {
+            margin: 20px;
+            position: relative;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+            display: block;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <nav>
+         <a href="home.html"><img  src="https://i.pinimg.com/originals/57/1a/e3/571ae39ce1b3360b0cf852322b413bdb.png" class="logo">
+         </a>
+             <a href="home.html" class="button">Home</a>
+        <a href="list.html" class="button">Liste pharmacie</a>
+        <a href="#" class="button">Map</a>
+        <button class="button">Français</button>
+        <button class="button">Anglais</button>
+    </nav>
+</div>
+<div>
+    <form>
+        <div class="image-overlay">
+            <p> Bienvenue,trouvez la pharmacie la plus proche de vous. </p>
+        </div>
+        <img src="https://villefranche-sur-mer.fr/wp-content/uploads/2019/09/58792_871_pharmacie-de-garde.jpg">
+    </form>
+</div>
+</body>
+</html>

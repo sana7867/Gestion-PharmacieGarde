@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte des Pharmacies</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+<script th:inline="javascript">
+    var map = L.map('map').setView([33.233334, -8.500000], 10);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([33.233334, -8.500000]).addTo(map)
+        .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+        .openPopup();
+
+    var Stadia_StamenTerrain = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.{ext}', {
+        minZoom: 0,
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        ext: 'png'
+    });
+
+    var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    googleStreets.addTo(map);
+
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    // googleHybrid.addTo(map);
+    var googleSat = L.tileLayer('http://{s}.google.com/vt?lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    //googleSat.addTo(map);
+    var googleTerrain = L.tileLayer('http://{s}.google.com/vt?lyrs=p&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+    });
+    //googleTerrain.addTo(map);
+    //Marquer
+    var singleMarker = L.marker([31.628674, -7.992047]).addTo(map)
+        .bindPopup('pharmacie.')
+        .openPopup();
+
+    var baseMaps = {
+        "Dark": Stadia_StamenTerrain,
+        "Google street": googleStreets,
+        "Google Train": googleTerrain,
+        "Google Sat": googleSat,
+        "Google Hybrid": googleHybrid
+    };
+
+    var overlayMaps = {
+        "Marker": singleMarker
+    };
+    var layerControl = L.control.layers(baseMaps, overlayMaps,{collapsed:false}).addTo(map);
+
+    var pharmaciesLayer = L.layerGroup().addTo(map); // Créez une couche pour les pharmacies
+
+    function addPharmacyMarker(pharmacie) {
+        var marker = L.marker([pharmacie.latitude, pharmacie.longitude]).addTo(pharmaciesLayer);
+        marker.bindPopup('<b>' + pharmacie.nom + '</b>');
+        map.panTo([pharmacie.latitude, pharmacie.longitude]); // Pan the map to the new pharmacy position
+    }
+
+    // Handle the addition of a new pharmacy via Ajax
+    function addNewPharmacy() {
+        $.ajax({
+            url: '/pharmacie/map', // Assuming this endpoint returns the new pharmacy data
+            method: 'GET',
+            success: function (data) {
+                addPharmacyMarker(data);
+            },
+            error: function (error) {
+                console.error('Error adding new pharmacy', error);
+            }
+        });
+    }
+</script>
+</body>
+</html>

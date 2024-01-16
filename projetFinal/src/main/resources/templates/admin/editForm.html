@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Administrateur</title>
+    <link rel="stylesheet"   type="text/css" th:href="@{/css/login.css}">
+</head>
+<body>
+
+
+<form th:object="${administrateur}" th:action="@{/admin/update}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" name="nom" th:field="*{nom}" required>
+
+    <label for="prenom">Prenom:</label>
+    <input type="text" id="prenom" name="prenom" th:field="*{prenom}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{password}" required>
+
+    <!-- Ajoutez d'autres champs au besoin -->
+
+    <button type="submit">Save Changes</button>
+</form>
+
+<a href="/admin/list">Retour à la liste des administrateurs</a>
+
+</body>
+</html>

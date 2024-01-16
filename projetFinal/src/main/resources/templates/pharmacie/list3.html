@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Pharmacies</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+
+</head>
+<body>
+<header>
+<div class="h-100 d-inline-flex align-items-center py-3 me-4">
+
+</div>
+</header>
+<nav>
+    <h1 class="m-0">Pharmacy Localisation</h1>
+    <a href="/client/home">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="/pharmacie/list3">Liste des Pharmacies</a>
+    <a href="/pharmacie/map">Carte</a>
+</nav>
+<div>
+    <h2>Liste des Pharmacies</h2>
+    <form th:action="@{/pharmacie/listByVilleAndZone}" method="GET">
+        <label for="villeNom">Filtrer par ville :</label>
+        <select id="villeNom" name="villeNom">
+            <option value="">Choisir une ville</option>
+            <option th:each="ville : ${villes}" th:value="${ville.nom}" th:text="${ville.nom}"></option>
+        </select>
+
+        <label for="zoneId">Filtrer par zone :</label>
+        <select id="zoneId" name="zoneId">
+            <option value="">Choisir une zone</option>
+            <option th:each="zone : ${zones}" th:value="${zone.id}" th:text="${zone.nom}"></option>
+        </select>
+
+        <button type="submit" class="btn">Filtrer</button>
+    </form>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Photo</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Zone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pharmacie : ${pharmacies}">
+            <td th:text="${pharmacie.id}"></td>
+            <td th:text="${pharmacie.nom}"></td>
+            <td>
+                <img th:src="@{/images/{imageName}(imageName=${pharmacie.photo})}"
+                     alt="photo" 	style="max-width: 100px; max-height: 100px;">
+            </td>
+            <td th:text="${pharmacie.latitude}"></td>
+            <td th:text="${pharmacie.longitude}"></td>
+            <td th:text="${ pharmacie.zone != null ? pharmacie.zone.nom:''}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer>
+    &copy; 2024
+</footer>
+</body>
+</html>
