@@ -98,5 +98,32 @@ Run tests and analyze the code using SonarQube for quality assurance.
 
 ![image](https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/88f85e5b-2870-4bba-b0ab-84f6cc614d3b)
 
+### Demo: 
+
+https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/bd10eac1-0260-4c8f-9a92-00d63d21f15f
+
+
+
+### DockerHub Link
+
+You can use the Docker image of this project available on Docker Hub using the following command:
+
+```bash
+docker pull sana2003/nom_image
+```
+
+Find the images at this link: [https://hub.docker.com/repositories/sana2003](https://hub.docker.com/repositories/sana2003)
+
+Don't forget to replace "nom_image" with the actual name of the image on Docker Hub.
+
+### Authors
+
+- Sana AKHERRAZ
+- Khadija ADNAN
+
+
+
+
+
 
 
