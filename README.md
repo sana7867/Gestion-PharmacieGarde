@@ -44,25 +44,6 @@ The application will be accessible at: [http://localhost:8089](http://localhost:
 ![image](https://github.com/sana7867/Gestion-PharmacieGarde/assets/147515885/1ecc397c-e8fa-44d1-b110-64ad34c03e56)
 
 
-
-
-## Pharmacy Guard Management System
-
-### Description
-
-A Spring MVC Thymeleaf project for managing pharmacies on duty. This application allows tracking information about pharmacies on duty, including details about the pharmacies and scheduled duties.
-
-### Technologies Used
-
-- Java
-- Spring MVC
-- Thymeleaf
-- HTML
-- CSS
-- JavaScript
-- MySQL
-- Dockerization
-
 ### Installation - Local Mode
 
 If you prefer to run the application outside a Docker container, follow these steps:
